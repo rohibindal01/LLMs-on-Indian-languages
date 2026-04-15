@@ -1,0 +1,26 @@
+[
+  {
+    "model": "gemini-flash",
+    "lang": "hi",
+    "avg": 79.0,
+    "qa_f1": 81.0,
+    "summarization_rougeL": 0.44,
+    "nli_accuracy": 78.0
+  },
+  {
+    "model": "llama3-70b",
+    "lang": "hi",
+    "avg": 75.0,
+    "qa_f1": 76.0,
+    "summarization_rougeL": 0.39,
+    "nli_accuracy": 74.0
+  },
+  {
+    "model": "mistral-7b",
+    "lang": "mr",
+    "avg": 60.0,
+    "qa_f1": 61.0,
+    "summarization_rougeL": 0.31,
+    "nli_accuracy": 58.0
+  }
+]

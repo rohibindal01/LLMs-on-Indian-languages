@@ -1,0 +1,48 @@
+name: Weekly Leaderboard Update
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # Every Monday at 6am UTC
+  workflow_dispatch:        # Allow manual trigger from GitHub UI
+
+jobs:
+  update-leaderboard:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run eval — Gemini Flash (Hindi)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python -m indic_eval.cli evaluate \
+            --model gemini-flash \
+            --lang hi \
+            --tasks qa,nli \
+            --num-samples 50
+
+      - name: Run eval — Groq LLaMA 3 (Hindi)
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          python -m indic_eval.cli evaluate \
+            --model llama3-70b \
+            --lang hi \
+            --tasks qa,nli \
+            --num-samples 50
+
+      - name: Commit leaderboard
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add results/leaderboard.json
+          git diff --cached --quiet || git commit -m "chore: update leaderboard [skip ci]"
+          git push

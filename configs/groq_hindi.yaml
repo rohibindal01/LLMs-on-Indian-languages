@@ -1,0 +1,8 @@
+# Groq — free LLaMA 3 70B, fastest inference
+# Requires GROQ_API_KEY in .env (https://console.groq.com)
+
+model: llama3-70b
+lang: hi
+tasks: qa,nli,sentiment
+num_samples: 200
+output_dir: results/

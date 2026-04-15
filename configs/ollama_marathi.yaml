@@ -1,0 +1,9 @@
+# Ollama — fully local, zero API cost
+# Requires Ollama running locally: https://ollama.ai
+# Pull model first: ollama pull llama3
+
+model: llama3-8b
+lang: mr
+tasks: qa,summarization
+num_samples: 50
+output_dir: results/

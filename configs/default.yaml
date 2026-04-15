@@ -1,0 +1,9 @@
+# Default evaluation configuration
+# Copy this file and edit to create custom runs.
+# Usage: python -m indic_eval.cli evaluate --config configs/default.yaml
+
+model: gemini-flash         # Model shortname or full HuggingFace ID
+lang: hi                    # Language code: hi, mr, ta, bn, te, gu, kn, ml, pa, ur
+tasks: qa,summarization,nli # Comma-separated task names
+num_samples: 100            # Samples per task (reduce for quick tests)
+output_dir: results/        # Where to write JSON results and leaderboard
