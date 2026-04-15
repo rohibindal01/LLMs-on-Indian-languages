@@ -96,14 +96,4 @@ cp configs/default.yaml configs/my_run.yaml
 python -m indic_eval.cli evaluate --config configs/my_run.yaml
 ```
 
----
 
-## 🤝 Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md). PRs welcome for new tasks, languages, and model backends!
-
----
-
-## 📄 License
-
-MIT License. See [LICENSE](LICENSE).
